@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   mysqldb:
@@ -54,15 +54,12 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - '../data/redis:/bitnami/redis/data'
+      - './data/redis:/bitnami/redis/data'
 
   rabbitmq:
     image: 'bitnami/rabbitmq:3.8'
     restart: always
     environment:
-      - RABBITMQ_NODE_TYPE=stats
-      - RABBITMQ_NODE_NAME=rabbit@stats
-      - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3
       - RABBITMQ_USERNAME=mc
       - RABBITMQ_PASSWORD=123@123
     ports:
@@ -71,4 +68,4 @@ services:
       - '25672:25672'
       - '15672:15672'
     volumes:
-      - '../data/rabbitmq:/bitnami'
+      - './data/rabbitmq:/bitnami'
