@@ -61,7 +61,7 @@ services:
     restart: always
     environment:
       - RABBITMQ_USERNAME=mc
-      - RABBITMQ_PASSWORD=123@123
+      - RABBITMQ_PASSWORD=123123
     ports:
       - '4369:4369'
       - '5672:5672'
