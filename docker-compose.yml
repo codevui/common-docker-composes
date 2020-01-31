@@ -25,24 +25,26 @@ services:
         max-size: "100M"
         max-file: "3"
     volumes:
-      - ../data/mysqldb:/var/lib/mysql
+      - ./data/mysqldb:/var/lib/mysql
 
   mongodb:
-    image: mongo:3.6
+    image: bitnami/mongodb:4.0
     restart: always
     ports:
       - "27017:27017"
     hostname: mongodb
-    #privileged: true
-    #stdin_open: true
-    #tty: true
+    environment:
+      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_USERNAME=my_user
+      - MONGODB_PASSWORD=password123
+      - MONGODB_DATABASE=my_database
     logging:
       driver: "json-file"
       options:
         max-size: "100M"
         max-file: "3"
     volumes:
-      - ../data/mongodb/:/data/db
+      - ./data/mongodb/:/bitnami/mongodb
 
   redis:
     image: 'bitnami/redis:5.0'
@@ -54,7 +56,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - './data/redis:/bitnami/redis/data'
+      - ./data/redis:/bitnami/redis/data
 
   rabbitmq:
     image: 'bitnami/rabbitmq:3.8'
@@ -68,4 +70,4 @@ services:
       - '25672:25672'
       - '15672:15672'
     volumes:
-      - './data/rabbitmq:/bitnami'
+      - ./data/rabbitmq:/bitnami
