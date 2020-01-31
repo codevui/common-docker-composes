@@ -35,9 +35,9 @@ services:
     hostname: mongodb
     environment:
       - MONGODB_ROOT_PASSWORD=password123
-      - MONGODB_USERNAME=my_user
+      - MONGODB_USERNAME=test
       - MONGODB_PASSWORD=password123
-      - MONGODB_DATABASE=my_database
+      - MONGODB_DATABASE=bgate-wallet
     logging:
       driver: "json-file"
       options:
